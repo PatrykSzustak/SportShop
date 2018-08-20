@@ -1,0 +1,60 @@
+h1{
+    color: white;
+    font-family: "Colonna MT";
+    font-size: 45px;
+}
+
+
+
+#panel {
+    width: 240px;
+    margin-left: 75%;
+    padding: 15px 0 0;
+    background: #fff;
+    border: 5px solid silver;
+    font: 16px calibri;
+    letter-spacing: -1px;
+    /*-webkit-box-shadow: 0 0 2px silver;*/
+    /*-moz-box-shadow: 0 0 2px silver;*/
+    /*box-shadow: 0 0 2px silver;*/
+}
+
+#rejestracja {
+    text-align: center;
+}
+body {
+    background-repeat: repeat-y;
+}
+
+form {
+    margin: 0;
+}
+
+label {
+    display: block;
+    width: 260px;
+    padding: 10px 20px;
+    color: #696969;
+    font-size: 16px;
+    /*text-shadow: 0 0 1px silver;*/
+}
+#username, #password {
+    display: block;
+    width: 190px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    border: 1px solid silver;
+    outline: 5px solid #ebebeb;
+    font-size: 13px;
+}
+#username:focus, #password:focus {
+    outline: 5px solid gray;
+}
+#lower {
+    background: #ecf2f5;
+    width: 200px;
+    padding: 5px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
