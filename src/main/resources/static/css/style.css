@@ -1,10 +1,11 @@
-h1{
+body{
+    background-image: url("../img/tloglowne.jpg");
+}
+h1 {
     color: white;
     font-family: "Colonna MT";
     font-size: 45px;
 }
-
-
 
 #panel {
     width: 240px;
@@ -22,6 +23,7 @@ h1{
 #rejestracja {
     text-align: center;
 }
+
 body {
     background-repeat: repeat-y;
 }
@@ -38,6 +40,7 @@ label {
     font-size: 16px;
     /*text-shadow: 0 0 1px silver;*/
 }
+
 #username, #password {
     display: block;
     width: 190px;
@@ -47,9 +50,11 @@ label {
     outline: 5px solid #ebebeb;
     font-size: 13px;
 }
+
 #username:focus, #password:focus {
     outline: 5px solid gray;
 }
+
 #lower {
     background: #ecf2f5;
     width: 200px;
@@ -57,4 +62,20 @@ label {
     text-align: center;
     margin-top: 20px;
 }
+
+
+
+form {
+    margin: 0;
+}
+
+label {
+    display: block;
+    width: 290px;
+    padding: 10px 20px;
+    color: #696969;
+    font-size: 16px;
+}
+
+
 

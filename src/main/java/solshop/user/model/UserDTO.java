@@ -5,8 +5,6 @@ import org.hibernate.validator.constraints.NotBlank;
 public class UserDTO {
 
     @NotBlank
-    private String name;
-    @NotBlank
     private String mail;
     @NotBlank
     private String password;
@@ -16,19 +14,12 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String name, String mail, String password) {
-        this.name = name;
+    public UserDTO( String mail, String password,String confirmPassword) {
         this.mail = mail;
         this.password = password;
+        this.confirmPassword =confirmPassword;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getMail() {
         return mail;
@@ -57,7 +48,6 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "name='" + name + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 '}';

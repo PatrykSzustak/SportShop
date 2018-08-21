@@ -1,110 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Sklep</title>
 
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/css/styleshop.css"/>
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover {
-            background-color: #111;
-        }
-
-        body {
-
-            background: fixed right;
-
-        }
-
-        li > a {
-            font-size: 25px;
-        }
-
-        #towarypiłkanozna {
-            margin-left: 30px;
-            margin-top: 5%;
-            color: black;
-            font-weight: bold;
-            font-size: 22px;
-            border-color: black;
-        }
-        #towarytenis {
-            margin-left: 30px;
-            margin-top: 5%;
-            color: black;
-            font-weight: bold;
-            font-size: 22px;
-            border-color: black;
-        }
-
-        h3 {
-            margin-top: 10%;
-            margin-left: 40px;
-            color: white;
-            font-size: 30px;
-            font-style: italic;
-        }
-        #towarypiłkanoznatytul{
-            color: black;
-            font-size: 30px;
-            font-family: Colonna MT;
-            font-style: italic;
-        }
-        #towarypiłkanoznadodaj{
-            color: green;
-            font-size: 25px;
-            font-style: italic;
-
-        }
-        #towarypiłkanoznausun{
-            color: red;
-            font-size: 25px;
-            font-style: italic;
-
-        }
-        #towarytenistytul{
-            color: black;
-            font-size: 30px;
-            font-family: Colonna MT;
-            font-style: italic;
-        }
-        #towarytenisdodaj{
-            color: green;
-            font-size: 25px;
-            font-style: italic;
-
-        }
-        #towarytenisusun{
-            color: red;
-            font-size: 25px;
-            font-style: italic;
-
-        }
-
-    </style>
 </head>
 
-<body background="../static/img/tlosklep.jpg">
+<body id="bodyShop">
 <ul>
     <li><a href="#towarypiłkanoznatytul">Piłka Nożna</a></li>
     <li><a href="#towarytenistytul">Tenis</a></li>
@@ -128,30 +32,30 @@
         <td>Cena zł</td>
     </tr>
     <tr>
-        <td> <center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"> </center></td>
-        <td><img src="../static/img/piłka.png" width="105" height="105"></td>
+        <td> <center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/> </center></td>
+        <td><img src="../static/img/piłka.png" width="105" height="105"/></td>
         <td>Fajna piłka</td>
         <td>110</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/korek.png" width="120" height="95"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/korek.png" width="120" height="95"/></td>
         <td>Korki najwyższej klasy</td>
         <td>999</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/koszulka.png" width="110" height="100"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/koszulka.png" width="110" height="100"/></td>
         <td>Odddychająca z dobrego materiału</td>
         <td>150</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20" ></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/spodenki.png" width="100" height="95"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20" /></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/spodenki.png" width="100" height="95"/></td>
         <td>lekkie , przewiewne idealne do grania w piłkę</td>
         <td>90</td>
     </tr>
@@ -169,30 +73,30 @@
         <td>Cena zł</td>
     </tr>
     <tr>
-        <td> <center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"> </center></td>
-        <td><img src="../static/img/rakieta.png" width="150" height="80"></td>
+        <td> <center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/> </center></td>
+        <td><img src="../static/img/rakieta.png" width="150" height="80"/></td>
         <td>Fajna rakieta</td>
         <td>750</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/rakieta2.png" width="120" height="95"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/rakieta2.png" width="120" height="95"/></td>
         <td>Ta też jest fajna</td>
         <td>820</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20"></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/piłeczkadotenisa.png" width="90" height="90"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20"/></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/piłeczkadotenisa.png" width="90" height="90"/></td>
         <td>Dobrze się nimi gra</td>
         <td>10</td>
     </tr>
     <tr>
-        <td><center><img src="../static/img/dodaj.png" width="20" height="20" ></center></td>
-        <td><center><img src="../static/img/usun.png" width="20" height="20"></center> </td>
-        <td><img src="../static/img/koszulkadotenisa.png" width="100" height="95"></td>
+        <td><center><img src="../static/img/dodaj.png" width="20" height="20" /></center></td>
+        <td><center><img src="../static/img/usun.png" width="20" height="20"/></center> </td>
+        <td><img src="../static/img/koszulkadotenisa.png" width="100" height="95"/></td>
         <td>lekkie , przewiewne idealne do grania w piłkę</td>
         <td>85</td>
     </tr>

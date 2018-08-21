@@ -1,0 +1,47 @@
+#bodyRegister{
+
+    background: url("../img/tlorejestracja.jpg") no-repeat fixed bottom;
+}
+
+
+
+#usernameregistration, #passwordregistration, #confirmpasswordregistration {
+    display: block;
+    width: 320px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    border: 1px solid silver;
+    outline: 5px solid #ebebeb;
+    font-size: 13px;
+}
+
+#usernameregistration:focus, #passwordregistration:focus, #confirmpasswordregistration:focus {
+    outline: 5px solid gray;
+}
+
+#lowerregistriation {
+    background: #ecf2f5;
+    width: 320px;
+    padding: 5px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#wstecz {
+    width: 40px;
+    height: 30px;
+
+}
+#panelRegistration {
+    width: 360px;
+    margin-left: 40%;
+    margin-top: 40px;
+    padding: 15px 0 0;
+    background: #fff;
+    border: 5px solid silver;
+    font: 16px calibri;
+    letter-spacing: -1px;
+    /*-webkit-box-shadow: 0 0 2px silver;*/
+    /*-moz-box-shadow: 0 0 2px silver;*/
+    /*box-shadow: 0 0 2px silver;*/
+}
