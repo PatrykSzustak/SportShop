@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <!--<link th:href="@{/css/style.css}"  rel="stylesheet"  />-->
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css"/>-->
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
     <title>SportShop</title>
 </head>
 <body >
-<h1>Witamy serdecznie w sklepie !!! </h1>
+
+<h1> <marquee direction="left">Witamy serdecznie w sklepie !!!</marquee></h1>
 
 <div id="panel">
     <form>

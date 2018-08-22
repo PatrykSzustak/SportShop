@@ -6,9 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import solshop.user.model.UserDTO;
 import solshop.user.service.UserService;
 
@@ -35,21 +32,10 @@ public class UserController {
         return "registration";
     }
 
-    @RequestMapping("/sklepUser")
-    String sklepUser() {
-        return "sklepUser";
-    }
-
-    @RequestMapping("/sklep")
-    String sklep() {
-        return "sklep";
-    }
-
-
     @PostMapping("/add")
     private String createUser(@Valid UserDTO user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/registration";
+            return "registration";
         }
         userService.saveUser(user);
         return "redirect:/index";

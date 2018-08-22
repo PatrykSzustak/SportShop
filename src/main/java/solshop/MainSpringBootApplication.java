@@ -7,6 +7,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import solshop.product.model.ProductDTO;
+import solshop.product.service.ProductService;
 import solshop.user.model.UserDTO;
 import solshop.user.service.UserService;
 
@@ -24,11 +26,13 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
 
 
     @Bean
-    CommandLineRunner commandLineRunner (UserService us, PasswordEncoder encoder) {
+    CommandLineRunner commandLineRunner (ProductService ps,UserService us, PasswordEncoder encoder) {
         return args -> {
 
             us.saveAdmin(new UserDTO("admin@gmail.com","admin","admin"));
             us.saveUser(new UserDTO("user@gmail.com","user","user"));
+            ps.saveProduct(new ProductDTO("Buty",100.00));
+            ps.saveProduct(new ProductDTO("Spodenki",80.00));
         };
     }
 

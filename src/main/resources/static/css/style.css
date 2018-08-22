@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/tloglowne.jpg");
+    background: url("../img/tloglowne.jpg") repeat-y;
 }
 h1 {
     color: white;
@@ -24,9 +24,6 @@ h1 {
     text-align: center;
 }
 
-body {
-    background-repeat: repeat-y;
-}
 
 form {
     margin: 0;

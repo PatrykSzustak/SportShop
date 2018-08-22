@@ -38,10 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 //                .antMatchers("/registration", "/add", "/index").permitAll()
-                .antMatchers("/registration", "/add", "/index","/sklep","/sklepUser").permitAll()
+//                .antMatchers("/registration", "/add", "/index","/sklep","/sklepUser","/skleptest","/addproduct").permitAll()
 //                .antMatchers("/sklep").hasRole("ADMIN")
 //                .antMatchers("/sklepUser").hasRole("USER")
-                .anyRequest().authenticated()
+
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/index")

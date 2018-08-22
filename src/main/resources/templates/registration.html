@@ -12,9 +12,9 @@
 
 <div id="panelRegistration">
     <form th:object="${userDTO}" th:action="@{/add}" method="post">
-        <label for="usernameregistration">Nowa nazwa użytkownika: </label>
+        <label for="usernameregistration">Nowy emial: </label>
         <input type="text"  id="usernameregistration" name="login" th:field="*{mail}"
-               placeholder="Tu wpisz swoją nową nazwę użytkownika..."/><br/>
+               placeholder="Tu wpisz swój nowy email..."/><br/>
         <label for="passwordregistration">Podaj nowe hasło:</label>
         <input type="password"  id="passwordregistration" name="password" th:field="*{password}"
                placeholder="Tutaj wpisz swoje nowe hasło..."/><br/>
