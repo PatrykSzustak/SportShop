@@ -8,9 +8,13 @@
 </head>
 <body>
 <ul>
-<li style="float:right "><a href="index.html">Wyloguj się</a></li>
-<li style="float:right"><a class="active" href="#about">Koszyk</a></li>
+    <li style="float: right">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign out"/>
+        </form>
+    </li>
 </ul>
+
 
 <div  th:object="${products}" th:action="@{/skleptest2}" method="get">
     <table>

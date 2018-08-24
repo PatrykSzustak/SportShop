@@ -17,10 +17,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper,PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder=passwordEncoder;
     }
 
     public UserDTO findUserById(Long id) {
@@ -36,13 +38,13 @@ public class UserService {
 
     public void saveUser(UserDTO user) {
         if(user.getPassword().equals(user.getConfirmPassword())){
-            UserEntity userEntity = new UserEntity(user.getMail(),user.getPassword(),"USER",true);
+            UserEntity userEntity = new UserEntity(user.getMail(),passwordEncoder.encode(user.getPassword()),"ROLE_USER",true);
             userRepository.save(userEntity);
         }
     }
     public void saveAdmin(UserDTO user) {
         if(user.getPassword().equals(user.getConfirmPassword())){
-            UserEntity userEntity = new UserEntity(user.getMail(),user.getPassword(),"ADMIN",true);
+            UserEntity userEntity = new UserEntity(user.getMail(),passwordEncoder.encode(user.getPassword()),"ROLE_ADMIN",true);
             userRepository.save(userEntity);
         }
     }

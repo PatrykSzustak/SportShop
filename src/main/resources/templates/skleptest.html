@@ -8,8 +8,14 @@
 </head>
 <body>
 <ul>
-    <li style="float:right "><a href="index.html">Wyloguj się</a></li>
+    <li style="float: right">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign out"/>
+        </form>
+    </li>
 </ul>
+
+
 <div>
     <form autocomplete="off" th:object="${productDTO}" th:action="@{/addproduct}" method="post">
         <label >Product name: </label>

@@ -1,5 +1,6 @@
 package solshop.user.model;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +12,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "users")
+@Data
 public class UserEntity implements UserDetails {
 
     @Id
@@ -39,34 +41,13 @@ public class UserEntity implements UserDetails {
     }
 
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> list = new ArrayList<>();
         list.add(new SimpleGrantedAuthority(role));
         return list;
-//     return Collections.emptySet();
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public String getUsername() {
@@ -92,31 +73,6 @@ public class UserEntity implements UserDetails {
         return enabled;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getRole() {
-        return role;
-    }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", uuid='" + uuid + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", enabled=" + enabled +
-                '}';
-    }
 }

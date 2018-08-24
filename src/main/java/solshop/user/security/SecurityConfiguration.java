@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,16 +21,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     MyUserDetailsService myUserDetailsService;
 
-    @Override
+    @Autowired
+    CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
+
+    /*@Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
-    }
+    }*/
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(myUserDetailsService);
-//        authProvider.setPasswordEncoder(encoder());
+        authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }
 
@@ -38,36 +42,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http
-
+                .authorizeRequests()
+                .antMatchers("/skleptest").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/skleptest2").hasAuthority("ROLE_USER")
+                .and()
                 .formLogin()
-                    .loginPage("/index")
-                    .failureForwardUrl("/index")
+                .loginPage("/index")
+                .successHandler(customizeAuthenticationSuccessHandler)
                 .and()
-                    .logout()
-                    .logoutSuccessUrl("/index")
+                .logout()
                 .and()
-                    .authorizeRequests().anyRequest().permitAll();
+                .authorizeRequests()
+                .anyRequest().permitAll();
+    }
 
-                 /*   .antMatchers("/skleptest").hasRole("ADMIN")
-                    .antMatchers("/skleptest2").hasRole("USER");*/
-
-//                .authorizeRequests()
-//                .antMatchers("/skleptest").hasRole("ADMIN")
-//                .antMatchers("/skleptest2").hasRole("USER")
-//                .and()
-//                .formLogin()
-//                .loginPage("/index")
-//                .permitAll();
-////                .defaultSuccessUrl("/skleptest3");
-////                .failureUrl("/index");
-
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/img/**");
     }
 
 
-/*    @Bean
+    @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
-    }*/
+    }
 
 
 }

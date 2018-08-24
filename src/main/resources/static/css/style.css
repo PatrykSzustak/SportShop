@@ -1,10 +1,26 @@
-body{
+body {
     background: url("../img/tloglowne.jpg") repeat-y;
 }
+
 h1 {
     color: white;
-    font-family: "Colonna MT";
+    font-family: "Colonna MT", serif;
     font-size: 45px;
+}
+
+#errororlogout {
+    position: absolute;
+    margin-left: 450px;
+}
+
+#errorinf {
+    font-size: 30px;
+    font-family: Arial;
+}
+
+#logoutinf {
+    font-size: 30px;
+    font-family: Arial;
 }
 
 #panel {
@@ -23,7 +39,6 @@ h1 {
 #rejestracja {
     text-align: center;
 }
-
 
 form {
     margin: 0;
@@ -59,8 +74,6 @@ label {
     text-align: center;
     margin-top: 20px;
 }
-
-
 
 form {
     margin: 0;

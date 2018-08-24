@@ -3,9 +3,6 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <!--<link th:href="@{/css/style.css}"  rel="stylesheet"  />-->
-    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
-    <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css"/>-->
     <link rel="stylesheet" type="text/css" media="all"
           href="../static/css/style.css" th:href="@{/css/style.css}"/>
     <title>SportShop</title>
@@ -16,11 +13,14 @@
     <marquee direction="left">Witamy serdecznie w sklepie !!!</marquee>
 </h1>
 
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
+<div id="errororlogout">
+    <div th:if="${param.error}">
+        <p id="errorinf" style="color: red" >Błędny email lub hasło </p>
+    </div>
+
+    <div  th:if="${param.logout}">
+        <p id="logoutinf" style="color: green">Zostałeś bezpiecznie wylogowany</p>
+    </div>
 </div>
 
 <div id="panel">
