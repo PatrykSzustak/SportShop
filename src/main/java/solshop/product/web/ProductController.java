@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import solshop.product.model.ProductDTO;
@@ -25,10 +24,17 @@ public class ProductController {
     @GetMapping("/skleptest")
     public String displayForAdmin(Model model) {
         model.addAttribute("products", productService.getAllProducts());
-//        model.addAttribute("product", productService.findOne(id));
         model.addAttribute(new ProductDTO());
 
         return "skleptest";
+    }
+
+    @PostMapping("/productEdit")
+    public String findIdToEdit(@RequestParam("id") Long id,Model model) {
+        ProductDTO one = productService.findOne(id);
+        model.addAttribute(one);
+
+        return "productEdit";
     }
 
     @GetMapping("/skleptest2")
@@ -47,9 +53,16 @@ public class ProductController {
         return "redirect:/skleptest";
     }
 
+    @PostMapping("/editproduct")
+    private String editProduct(@Valid ProductDTO productDTO, Model model) {
+
+        productService.saveProduct(productDTO);
+
+        return "redirect:/skleptest";
+    }
+
     @PostMapping("/removeproduct")
     private String removeProduct(@RequestParam("id") Long id) {
-        System.out.println(id);
 
         productService.remove(id);
         return "redirect:/skleptest";

@@ -35,4 +35,18 @@ public class ProductMapperImpl implements ProductMapper {
         }
         return set;
     }
+
+    @Override
+    public ProductEntity toProductEntity(ProductDTO productDTO) {
+        if ( productDTO == null ) {
+            return null;
+        }
+        ProductEntity productEntity = new ProductEntity();
+
+        productEntity.setId(productDTO.getId());
+        productEntity.setName( productDTO.getName());
+        productEntity.setPrice( productDTO.getPrice());
+
+        return productEntity;
+    }
 }

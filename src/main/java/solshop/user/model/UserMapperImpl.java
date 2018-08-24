@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
             UserDTO userDTO = new UserDTO();
 
-            userDTO.setMail( userEntity.getEmail() );
+            userDTO.setMail( userEntity.getEmail());
 
             return userDTO;
         }

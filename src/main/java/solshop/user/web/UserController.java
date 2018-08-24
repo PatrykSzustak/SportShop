@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/add")
     private String createUser(@Valid UserDTO user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "/registration";
         }
         userService.saveUser(user);
         return "redirect:/index";

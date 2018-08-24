@@ -3,13 +3,11 @@ package solshop.user.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -30,11 +28,14 @@ public class UserEntity implements UserDetails {
     @Column(name = "enabled")
     private boolean enabled;
 
-    public UserEntity(String email, String password, String role) {
+    public UserEntity() {
+    }
+
+    public UserEntity(String email, String password, String role,boolean enabled) {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.enabled=false;
+        this.enabled=enabled;
     }
 
 
@@ -57,7 +58,10 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptySet();
+        List<GrantedAuthority> list = new ArrayList<>();
+        list.add(new SimpleGrantedAuthority(role));
+        return list;
+//     return Collections.emptySet();
     }
 
     public String getPassword() {
@@ -84,6 +88,10 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -94,10 +102,6 @@ public class UserEntity implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
     }
 
     public void setEnabled(boolean enabled) {

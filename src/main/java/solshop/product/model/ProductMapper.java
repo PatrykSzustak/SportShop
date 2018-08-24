@@ -10,4 +10,6 @@ public interface ProductMapper {
 
     Set<ProductDTO> toProductDTO(Collection<ProductEntity> productEntities);
 
+    ProductEntity toProductEntity(ProductDTO productDTO);
+
 }

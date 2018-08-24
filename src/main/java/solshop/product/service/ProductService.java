@@ -33,13 +33,20 @@ public class ProductService {
     }
 
     public void saveProduct(ProductDTO product) {
-            ProductEntity productEntity = new ProductEntity(product.getName(),product.getPrice());
-            productRepository.save(productEntity);
+        ProductEntity productEntity = productRepository.findOneById(product.getId());
+        if (productEntity == null) {
+            ProductEntity newProduct = new ProductEntity(product.getName(), product.getPrice());
+            productRepository.save(newProduct);
+        } else {
+            ProductEntity productEntity1 = productMapper.toProductEntity(product);
+            productRepository.save(productEntity1);
+        }
     }
 
-    public void remove(Long id){
+    public void remove(Long id) {
         ProductEntity oneById = productRepository.findOneById(id);
         productRepository.delete(oneById);
     }
+
 
 }

@@ -11,7 +11,7 @@
 <body id="bodyregister" >
 
 <div id="panelRegistration">
-    <form th:object="${userDTO}" th:action="@{/add}" method="post">
+    <form autocomplete="off" th:object="${userDTO}" th:action="@{/add}" method="post">
         <label for="usernameregistration">Nowy emial: </label>
         <input type="text"  id="usernameregistration" name="login" th:field="*{mail}"
                placeholder="Tu wpisz swój nowy email..."/><br/>

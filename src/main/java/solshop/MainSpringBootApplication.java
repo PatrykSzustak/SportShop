@@ -26,7 +26,7 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
 
 
     @Bean
-    CommandLineRunner commandLineRunner (ProductService ps,UserService us, PasswordEncoder encoder) {
+    CommandLineRunner commandLineRunner (ProductService ps,UserService us) {
         return args -> {
 
             us.saveAdmin(new UserDTO("admin@gmail.com","admin","admin"));

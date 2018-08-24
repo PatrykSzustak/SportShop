@@ -1,5 +1,6 @@
 package solshop.user.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,18 +17,19 @@ import solshop.user.service.MyUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN")
-                .and()
-                .withUser("user").password("user").roles("USER");
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(MyUserDetailsService myUserDetailsService) {
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(myUserDetailsService);
-        authProvider.setPasswordEncoder(encoder());
+//        authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }
 
@@ -36,26 +38,37 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http
-                .authorizeRequests()
-//                .antMatchers("/registration", "/add", "/index").permitAll()
-//                .antMatchers("/registration", "/add", "/index","/sklep","/sklepUser","/skleptest","/addproduct").permitAll()
-//                .antMatchers("/sklep").hasRole("ADMIN")
-//                .antMatchers("/sklepUser").hasRole("USER")
 
-                .anyRequest().permitAll()
-                .and()
                 .formLogin()
-                .loginPage("/index")
-                .defaultSuccessUrl("/sklepUser")
-                .failureUrl("/index");
+                    .loginPage("/index")
+                    .failureForwardUrl("/index")
+                .and()
+                    .logout()
+                    .logoutSuccessUrl("/index")
+                .and()
+                    .authorizeRequests().antMatchers("/skleptest","/skleptest2").permitAll();
+
+                 /*   .antMatchers("/skleptest").hasRole("ADMIN")
+                    .antMatchers("/skleptest2").hasRole("USER");*/
+
+//                .authorizeRequests()
+//                .antMatchers("/skleptest").hasRole("ADMIN")
+//                .antMatchers("/skleptest2").hasRole("USER")
+//                .and()
+//                .formLogin()
+//                .loginPage("/index")
+//                .permitAll();
+////                .defaultSuccessUrl("/skleptest3");
+////                .failureUrl("/index");
 
     }
 
 
-    @Bean
+/*    @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
-    }
+    }*/
+
 
 }
 
