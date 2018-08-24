@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/styleshoptest2.css" th:href="@{/css/styleshoptest2.css}"/>
 </head>
 <body>
+<ul>
+<li style="float:right "><a href="index.html">Wyloguj się</a></li>
+<li style="float:right"><a class="active" href="#about">Koszyk</a></li>
+</ul>
 
 <div  th:object="${products}" th:action="@{/skleptest2}" method="get">
     <table>

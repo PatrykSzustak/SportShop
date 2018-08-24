@@ -1,0 +1,14 @@
+/*body{
+    background: url("../img/tlosklep.jpg") fixed right;
+}*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgray;
+}
+
+li {
+    float: left;
+}

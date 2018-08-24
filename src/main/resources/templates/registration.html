@@ -8,17 +8,17 @@
 </head>
 <a id="wstecz" th:href="@{/index}"><img th:src="@{/img/wstecz.jpg}" alt="Wróć do strony głównej" /></a>
 
-<body id="bodyregister" >
+<body >
 
 <div id="panelRegistration">
     <form autocomplete="off" th:object="${userDTO}" th:action="@{/add}" method="post">
-        <label for="usernameregistration">Nowy emial: </label>
+        <label for="usernameregistration"> <center>Nowy emial:</center> </label>
         <input type="text"  id="usernameregistration" name="login" th:field="*{mail}"
                placeholder="Tu wpisz swój nowy email..."/><br/>
-        <label for="passwordregistration">Podaj nowe hasło:</label>
+        <label for="passwordregistration"><center>Podaj nowe hasło:</center></label>
         <input type="password"  id="passwordregistration" name="password" th:field="*{password}"
                placeholder="Tutaj wpisz swoje nowe hasło..."/><br/>
-        <label for="confirmpasswordregistration">Podaj jeszcze raz swoje nowe hasło:</label>
+        <label for="confirmpasswordregistration"><center>Podaj jeszcze raz swoje nowe hasło:</center></label>
         <input type="password"  id="confirmpasswordregistration" name="confirmPassword" th:field="*{confirmPassword}"
                placeholder="Wpisz jeszcze raz swoje hasło"/><br/>
         <div id="lowerregistriation">

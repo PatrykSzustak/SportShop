@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/styleshoptest.css" th:href="@{/css/styleshoptest.css}"/>
 </head>
 <body>
-
-
+<ul>
+    <li style="float:right "><a href="index.html">Wyloguj się</a></li>
+</ul>
 <div>
     <form autocomplete="off" th:object="${productDTO}" th:action="@{/addproduct}" method="post">
         <label >Product name: </label>
