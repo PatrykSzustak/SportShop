@@ -14,13 +14,13 @@
     <form autocomplete="off" th:object="${userDTO}" th:action="@{/add}" method="post">
         <label for="usernameregistration"> <center>Nowy emial:</center> </label>
         <input type="text"  id="usernameregistration" name="login" th:field="*{mail}"
-               placeholder="Tu wpisz swój nowy email..."/><br/>
+               placeholder="Tu wpisz swój nowy email..." th:required="required"/><br/>
         <label for="passwordregistration"><center>Podaj nowe hasło:</center></label>
         <input type="password"  id="passwordregistration" name="password" th:field="*{password}"
-               placeholder="Tutaj wpisz swoje nowe hasło..."/><br/>
+               placeholder="Tutaj wpisz swoje nowe hasło..." th:required="required"/><br/>
         <label for="confirmpasswordregistration"><center>Podaj jeszcze raz swoje nowe hasło:</center></label>
         <input type="password"  id="confirmpasswordregistration" name="confirmPassword" th:field="*{confirmPassword}"
-               placeholder="Wpisz jeszcze raz swoje hasło"/><br/>
+               placeholder="Wpisz jeszcze raz swoje hasło" th:required="required"/><br/>
         <div id="lowerregistriation">
             <input type="submit" value="Załóż konto" name="registerButton"/>
         </div>
