@@ -15,6 +15,7 @@
     </li>
 </ul>
 
+<img th:src="@{/img/admin.png}"/>
 
 <div>
     <form autocomplete="off" th:object="${productDTO}" th:action="@{/addproduct}" method="post">
@@ -28,7 +29,7 @@
     </form>
 </div>
 <div th:object="${products}" th:action="@{/skleptest}" method="get">
-    <table>
+    <table border="5" cellpadding="2">
         <th:block th:each="product : ${products}">
             <tr>
                 <td th:hidden="${product.id}">...</td>
@@ -36,10 +37,10 @@
                 <td th:text="${product.price}">...</td>
                 <td> <form  th:action="@{/removeproduct}" method="POST">
                     <input type="hidden" name="id" th:value="${product.id}"/>
-                    <input  type="submit" value="Remove"/></form></td>
+                    <input  type="image" th:src="@{/img/usun.png}" th:width="30" th:height="30" th:alt="Remove"/></form></td>
                 <td> <form  th:action="@{/productEdit}" method="post">
                     <input type="hidden" name="id" th:value="${product.id}"/>
-                    <input  type="submit" value="Edit"/></form></td>
+                    <input  type="image" th:src="@{/img/edytuj.png}" th:width="30" th:height="30" th:alt="Edit"/></form></td>
             </tr>
         </th:block>
     </table>
