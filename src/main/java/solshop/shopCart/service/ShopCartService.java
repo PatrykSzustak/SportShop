@@ -31,28 +31,41 @@ public class ShopCartService {
         this.shopCartMapper = shopCartMapper;
     }
 
+    public List<ProductEntity> getAllProductsInShopCart(String id) {
+        List<ProductEntity> lists = new ArrayList<>();
+        List<ProductEntity> all = productRepository.findAll();
+        for (ProductEntity productEntity : all) {
+            if (productEntity.getShopCartEntityList().contains(shopCartRepository.findOne(id))) {
+                lists.add(productEntity);
+            }
+        }
+        return lists;
+    }
+
 
     public void buyProduct(Long productId, String email) {
         if (shopCartRepository.findOne(email) == null) {
+            List<ShopCartEntity> shopCartList = new ArrayList<>();
+            List<ProductEntity> list = new ArrayList<>();
             ProductEntity productEntity = productRepository.findOneById(productId);
             Double price = productEntity.getPrice();
-            ShopCartEntity shopCartEntity = new ShopCartEntity(email, 1, 5, price);
+            list.add(productEntity);
+            ShopCartEntity shopCartEntity = new ShopCartEntity(email, 1, 5, price, list);
+            shopCartList.add(shopCartEntity);
+            productEntity.setShopCartEntityList(shopCartList);
             shopCartRepository.save(shopCartEntity);
-            productEntity.setShopCartEntity(shopCartEntity);
-            productRepository.save(productEntity);
         } else {
-            if(productRepository.findOneById(productId).getShopCartEntity()==null){
-                ProductEntity productEntity = productRepository.findOneById(productId);
-                ShopCartEntity shopCartEntity = shopCartRepository.findOne(email);
-                int itemCount = shopCartEntity.getItemCount();
-                shopCartEntity.setItemCount(itemCount + 1);
-                Double totalPrice = shopCartEntity.getTotalPrice();
-                shopCartEntity.setTotalPrice(totalPrice + productEntity.getPrice());
-                shopCartRepository.save(shopCartEntity);
-                productEntity.setShopCartEntity(shopCartEntity);
-                productRepository.save(productEntity);
-            }
-
+            ProductEntity productEntity = productRepository.findOneById(productId);
+            ShopCartEntity shopCartEntity = shopCartRepository.findOne(email);
+            shopCartEntity.getProductList().add(productEntity);
+            int itemCount = shopCartEntity.getItemCount();
+            shopCartEntity.setItemCount(itemCount + 1);
+            Double totalPrice = shopCartEntity.getTotalPrice();
+            shopCartEntity.setTotalPrice(totalPrice + productEntity.getPrice());
+            List<ShopCartEntity> shopCartEntityList = productEntity.getShopCartEntityList();
+            shopCartEntityList.add(shopCartEntity);
+            productEntity.setShopCartEntityList(shopCartEntityList);
+            shopCartRepository.save(shopCartEntity);
         }
     }
 }

@@ -37,11 +37,11 @@ public class ShopCartController {
         return "redirect:/skleptest2";
     }
 
-    /*@GetMapping("/shopCart")
-    public String displayProductsInShopCart(Model model) {
-        model.addAttribute("productsList", productService.getAllProducts());
-        model.addAttribute(new ProductDTO());
+    @GetMapping("/shopCart")
+    public String displayProductsInShopCart(Model model,Principal principal) {
+        String name = principal.getName();
+        model.addAttribute("productsList", shopCartService.getAllProductsInShopCart(name));
 
         return "shopCart";
-    }*/
+    }
 }

@@ -18,7 +18,7 @@ public class ShopCartEntity {
     private int capacity;
     private Double totalPrice;
 
-    @OneToMany(mappedBy = "shopCartEntity")
+    @ManyToMany(mappedBy = "shopCartEntityList")
     private List<ProductEntity> productList;
 
 
@@ -26,11 +26,12 @@ public class ShopCartEntity {
     public ShopCartEntity() {
     }
 
-    public ShopCartEntity(String id,int itemCount, int capacity, Double totalPrice) {
+    public ShopCartEntity(String id,int itemCount, int capacity, Double totalPrice,List<ProductEntity> list) {
         this.id = id;
         this.itemCount = itemCount;
         this.capacity = 5;
         this.totalPrice = totalPrice;
+        this.productList = list;
     }
 }
 
