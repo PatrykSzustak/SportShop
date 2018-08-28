@@ -7,5 +7,21 @@
 </head>
 <body>
 
+
+<div  th:object="${productsList}" th:action="@{/skleptest2}" method="get">
+    <table border="5" cellpadding="2">
+        <tr>
+            <td>Product Name</td>
+            <td>Price Euro</td>
+        </tr>
+        <th:block th:each="product : ${productsList}">
+            <tr>
+                <td th:text="${product.name}">...</td>
+                <td th:text="${product.price}">...</td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
 </body>
 </html>

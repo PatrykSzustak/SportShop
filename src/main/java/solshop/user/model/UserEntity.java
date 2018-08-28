@@ -22,6 +22,7 @@ public class UserEntity implements UserDetails {
     private String uuid = UUID.randomUUID().toString();
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
     @NotBlank
     private String password;

@@ -7,8 +7,8 @@ import org.hibernate.validator.constraints.NotBlank;
 public class ProductDTO {
 
 
+
     private Long id;
-    @NotBlank
     private String name;
     private Double price;
 

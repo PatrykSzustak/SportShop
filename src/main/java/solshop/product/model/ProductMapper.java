@@ -1,6 +1,7 @@
 package solshop.product.model;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 public interface ProductMapper {
@@ -8,8 +9,10 @@ public interface ProductMapper {
 
     ProductDTO toProductDTO(ProductEntity productEntity);
 
-    Set<ProductDTO> toProductDTO(Collection<ProductEntity> productEntities);
+    List<ProductDTO> toProductDTO(Collection<ProductEntity> productEntities);
 
     ProductEntity toProductEntity(ProductDTO productDTO);
+
+    List<ProductEntity> toProductEntity(Collection<ProductDTO> productDTOS);
 
 }

@@ -2,12 +2,17 @@ package solshop.user.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import solshop.shopCart.model.ShopCartDTO;
+import solshop.shopCart.model.ShopCartEntity;
+import solshop.shopCart.model.ShopCartMapper;
+import solshop.shopCart.repository.ShopCartRepository;
 import solshop.user.UserNotFoundException;
 import solshop.user.model.UserDTO;
 import solshop.user.model.UserEntity;
 import solshop.user.model.UserMapper;
 import solshop.user.repository.UserRepository;
 
+import java.util.Collection;
 import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
@@ -18,11 +23,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+    private final ShopCartRepository shopCartRepository;
+    private final ShopCartMapper shopCartMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper,PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder, ShopCartRepository shopCartRepository, ShopCartMapper shopCartMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-        this.passwordEncoder=passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
+        this.shopCartRepository = shopCartRepository;
+        this.shopCartMapper = shopCartMapper;
     }
 
     public UserDTO findUserById(Long id) {
@@ -37,14 +46,18 @@ public class UserService {
 
 
     public void saveUser(UserDTO user) {
-        if(user.getPassword().equals(user.getConfirmPassword())){
-            UserEntity userEntity = new UserEntity(user.getMail(),passwordEncoder.encode(user.getPassword()),"ROLE_USER",true);
-            userRepository.save(userEntity);
+        if (!userRepository.findOneByEmail(user.getMail()).isPresent()) {
+            if (user.getPassword().equals(user.getConfirmPassword())) {
+                UserEntity userEntity = new UserEntity(user.getMail(), passwordEncoder.encode(user.getPassword()), "ROLE_USER", true);
+                userRepository.save(userEntity);
+            }
         }
+
     }
+
     public void saveAdmin(UserDTO user) {
-        if(user.getPassword().equals(user.getConfirmPassword())){
-            UserEntity userEntity = new UserEntity(user.getMail(),passwordEncoder.encode(user.getPassword()),"ROLE_ADMIN",true);
+        if (user.getPassword().equals(user.getConfirmPassword())) {
+            UserEntity userEntity = new UserEntity(user.getMail(), passwordEncoder.encode(user.getPassword()), "ROLE_ADMIN", true);
             userRepository.save(userEntity);
         }
     }

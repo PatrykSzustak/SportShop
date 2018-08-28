@@ -2,6 +2,7 @@ package solshop.product.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
+import solshop.shopCart.model.ShopCartEntity;
 
 import javax.persistence.*;
 
@@ -18,6 +19,11 @@ public class ProductEntity {
     private String name;
 
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "shopcart_id")
+    private ShopCartEntity shopCartEntity;
+
 
     public ProductEntity() {
     }

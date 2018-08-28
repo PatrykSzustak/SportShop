@@ -2,9 +2,7 @@ package solshop.product.model;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class ProductMapperImpl implements ProductMapper {
@@ -24,16 +22,16 @@ public class ProductMapperImpl implements ProductMapper {
     }
 
     @Override
-    public Set<ProductDTO> toProductDTO(Collection<ProductEntity> productEntities) {
+    public List<ProductDTO> toProductDTO(Collection<ProductEntity> productEntities) {
         if ( productEntities == null ) {
             return null;
         }
 
-        Set<ProductDTO> set = new HashSet<>( Math.max( (int) ( productEntities.size() / .75f ) + 1, 16 ) );
+        List<ProductDTO> list = new ArrayList<>( Math.max( (int) ( productEntities.size() / .75f ) + 1, 16 ) );
         for ( ProductEntity productEntity : productEntities ) {
-            set.add( toProductDTO( productEntity ) );
+            list.add( toProductDTO( productEntity ) );
         }
-        return set;
+        return list;
     }
 
     @Override
@@ -48,5 +46,10 @@ public class ProductMapperImpl implements ProductMapper {
         productEntity.setPrice( productDTO.getPrice());
 
         return productEntity;
+    }
+
+    @Override
+    public List<ProductEntity> toProductEntity(Collection<ProductDTO> productDTOS) {
+        return null;
     }
 }
