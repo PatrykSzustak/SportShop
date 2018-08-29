@@ -31,6 +31,7 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
 
             us.saveAdmin(new UserDTO("admin@gmail.com","admin","admin"));
             us.saveUser(new UserDTO("user@gmail.com","user","user"));
+            us.saveUser(new UserDTO("patryk@patryk.pl","patryk","patryk"));
             ps.saveProduct(new ProductDTO("Buty",100.00));
             ps.saveProduct(new ProductDTO("Spodenki",80.00));
             ps.saveProduct(new ProductDTO("Piłka",15.90));

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import solshop.shopCart.model.ShopCartEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class ProductEntity {
     private Double price;
 
     @ManyToMany
-    private List<ShopCartEntity> shopCartEntityList;
+    private List<ShopCartEntity> shopCartEntityList= new ArrayList<>();
 
 
     public ProductEntity() {

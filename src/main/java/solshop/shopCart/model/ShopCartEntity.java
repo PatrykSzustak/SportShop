@@ -4,6 +4,7 @@ import lombok.Data;
 import solshop.product.model.ProductEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class ShopCartEntity {
     private Double totalPrice;
 
     @ManyToMany(mappedBy = "shopCartEntityList")
-    private List<ProductEntity> productList;
+    private List<ProductEntity> productList = new ArrayList<>();
 
 
 
