@@ -33,5 +33,7 @@ public class ShopCartEntity {
         this.totalPrice = totalPrice;
         this.productList = list;
     }
+
+
 }
 

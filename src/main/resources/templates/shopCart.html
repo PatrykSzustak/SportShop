@@ -8,7 +8,7 @@
 <body>
 
 
-<div  th:object="${productsList}" th:action="@{/shopCart}" method="get">
+<div th:object="${productsList}" th:action="@{/shopCart}" method="get">
     <table border="5" cellpadding="2">
         <tr>
             <td>Product Name</td>
@@ -20,6 +20,16 @@
                 <td th:text="${product.price}">...</td>
             </tr>
         </th:block>
+    </table>
+</div>
+<div th:object="${totalPrice}" th:action="@{/shopCart}" method="get">
+    <table border="5" cellpadding="2">
+        <tr>
+            <td>Total Price</td>
+        </tr>
+        <tr>
+            <td th:text="${totalPrice}">...</td>
+        </tr>
     </table>
 </div>
 

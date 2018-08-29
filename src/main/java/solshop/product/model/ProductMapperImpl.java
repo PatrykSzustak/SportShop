@@ -50,6 +50,14 @@ public class ProductMapperImpl implements ProductMapper {
 
     @Override
     public List<ProductEntity> toProductEntity(Collection<ProductDTO> productDTOS) {
-        return null;
+        if (productDTOS == null) {
+            return null;
+        }
+
+        List<ProductEntity> list = new ArrayList<>(Math.max((int) (productDTOS.size() / .75f) + 1, 16));
+        for (ProductDTO productDTO : productDTOS) {
+            list.add(toProductEntity(productDTO));
+        }
+        return list;
     }
 }

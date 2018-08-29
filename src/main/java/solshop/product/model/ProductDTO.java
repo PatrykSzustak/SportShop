@@ -1,7 +1,7 @@
 package solshop.product.model;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
+
 
 @Data
 public class ProductDTO {
@@ -11,6 +11,7 @@ public class ProductDTO {
     private Long id;
     private String name;
     private Double price;
+//    private List<ShopCartDTO> shopCartDTOList;
 
     public ProductDTO(){
 
