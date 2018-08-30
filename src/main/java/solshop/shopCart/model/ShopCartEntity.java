@@ -20,8 +20,7 @@ public class ShopCartEntity {
     private Double totalPrice;
 
     @ManyToMany(mappedBy = "shopCartEntityList")
-    private List<ProductEntity> productList = new ArrayList<>();
-
+    private List<ProductEntity> productList ;
 
 
     public ShopCartEntity() {

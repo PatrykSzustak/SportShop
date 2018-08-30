@@ -41,10 +41,12 @@
                 <td th:text="${product.price}">...</td>
                 <td> <form  th:action="@{/removeproduct}" method="POST">
                     <input type="hidden" name="id" th:value="${product.id}"/>
-                    <input  type="image" th:src="@{/img/usun.png}" th:width="30" th:height="30" th:alt="Remove"/></form></td>
+                    <input  type="image" th:src="@{/img/usun.png}" th:width="30" th:height="30" th:alt="Remove"/></form>
+                </td>
                 <td> <form  th:action="@{/productEdit}" method="post">
                     <input type="hidden" name="id" th:value="${product.id}"/>
-                    <input  type="image" th:src="@{/img/edytuj.png}" th:width="30" th:height="30" th:alt="Edit"/></form></td>
+                    <input  type="image" th:src="@{/img/edytuj.png}" th:width="30" th:height="30" th:alt="Edit"/></form>
+                </td>
             </tr>
         </th:block>
     </table>

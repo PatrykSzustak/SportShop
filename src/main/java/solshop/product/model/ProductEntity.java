@@ -23,7 +23,7 @@ public class ProductEntity {
     private Double price;
 
     @ManyToMany
-    private List<ShopCartEntity> shopCartEntityList= new ArrayList<>();
+    private List<ShopCartEntity> shopCartEntityList;
 
 
     public ProductEntity() {

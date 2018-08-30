@@ -19,19 +19,31 @@
 </ul>
 
 
-<div  th:object="${products}" th:action="@{/skleptest2}" method="get">
+<div th:object="${products}" th:action="@{/skleptest2}" method="get">
     <table border="5" cellpadding="2">
         <tr>
             <td>Product Name</td>
-            <td>Price Euro</td>
+            <td>
+                <form  th:action="@{/search}" th:object="${Currency}" method="get">
+                    <label>
+                        <select>
+                            <option th:value="${eur}">EUR</option>
+                            <option th:value="${usd}">USD</option>
+                            <option th:value="${pln}">PLN</option>
+                        </select>
+                    </label>
+                </form>
+            </td>
         </tr>
         <th:block th:each="product : ${products}">
             <tr>
                 <td th:text="${product.name}">...</td>
                 <td th:text="${product.price}">...</td>
-                <td> <form  th:action="@{/buyproduct}" method="POST">
-                    <input type="hidden" name="id" th:value="${product.id}"/>
-                    <input  type="image" th:src="@{/img/dodaj.png}" th:width="20" th:height="20" th:alt="buy" /></form>
+                <td>
+                    <form th:action="@{/buyproduct}" method="POST">
+                        <input type="hidden" name="id" th:value="${product.id}"/>
+                        <input type="image" th:src="@{/img/dodaj.png}" th:width="20" th:height="20" th:alt="buy"/>
+                    </form>
                 </td>
             </tr>
         </th:block>

@@ -6,14 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import solshop.product.model.ProductDTO;
 import solshop.product.service.ProductService;
-import solshop.shopCart.model.ShopCartDTO;
-import solshop.shopCart.repository.ShopCartRepository;
 import solshop.shopCart.service.ShopCartService;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 public class ShopCartController {
@@ -49,4 +45,12 @@ public class ShopCartController {
 
         return "shopCart";
     }
+
+
+    /*@PostMapping("/removeproductfromshopcart")
+    public String removeProductFromShopCart(@RequestParam("id") Long id, Principal principal){
+        String name = principal.getName();
+        shopCartService.remove(id,name);
+        return "redirect:/shopCart";
+    }*/
 }

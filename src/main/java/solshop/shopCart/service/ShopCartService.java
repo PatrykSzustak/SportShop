@@ -1,18 +1,15 @@
 package solshop.shopCart.service;
 
 import org.springframework.stereotype.Service;
-import solshop.product.model.ProductDTO;
 import solshop.product.model.ProductEntity;
 import solshop.product.model.ProductMapper;
 import solshop.product.repository.ProductRepository;
-import solshop.shopCart.model.ShopCartDTO;
 import solshop.shopCart.model.ShopCartEntity;
 import solshop.shopCart.model.ShopCartMapper;
 import solshop.shopCart.repository.ShopCartRepository;
 import solshop.user.repository.UserRepository;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -46,16 +43,12 @@ public class ShopCartService {
         }
         return shopCartRepository.findOne(userEmail).getTotalPrice();
     }
-//    public Double getTotalPriceFromShopCart(String name){
-//        ShopCartDTO shopCartDTO = shopCartMapper.toShopCartDTO(shopCartRepository.findOne(name));
-//        Double totalPrice = shopCartDTO.getTotalPrice();
-//        return totalPrice;
-//    }
 
-//    public ShopCartEntity findOneShopCartById(String name){
-//        return shopCartRepository.findOne(name);
-//    }
-
+    /*public void remove(Long productId,String shopCartId){
+        ProductEntity oneById = productRepository.findOneById(productId);
+        ShopCartEntity one = shopCartRepository.findOne(shopCartId);
+        one.getProductList().remove(oneById);
+    }*/
 
     public void buyProduct(Long productId, String email) {
         if (shopCartRepository.findOne(email) == null) {
