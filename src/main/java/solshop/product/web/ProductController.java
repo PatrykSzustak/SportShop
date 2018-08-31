@@ -10,6 +10,8 @@ import solshop.product.model.ProductDTO;
 import solshop.product.service.ProductService;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -40,6 +42,11 @@ public class ProductController {
     @GetMapping("/skleptest2")
     public String displayForUser(Model model) {
         model.addAttribute("products", productService.getAllProducts());
+        Map<String, String> dropdownMap = new HashMap<>();
+        dropdownMap.put("USD", "usd");
+        dropdownMap.put("EUR", "eur");
+        dropdownMap.put("PLN", "pln");
+        model.addAttribute("dropDownItems",dropdownMap);
         return "skleptest2";
     }
 

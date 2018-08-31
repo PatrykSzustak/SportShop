@@ -24,12 +24,12 @@
         <tr>
             <td>Product Name</td>
             <td>
-                <form  th:action="@{/search}" th:object="${Currency}" method="get">
+                <form th:action="@{/search}" method="get">
                     <label>
-                        <select>
-                            <option th:value="${eur}">EUR</option>
-                            <option th:value="${usd}">USD</option>
-                            <option th:value="${pln}">PLN</option>
+                        <select name="option" id="option" onchange="this.form.submit()">
+                            <option th:each="dropDownItem : ${dropDownItems}"
+                                    th:value="${dropDownItem.value}" th:text="${dropDownItem.key}">
+                            </option>
                         </select>
                     </label>
                 </form>
@@ -38,7 +38,7 @@
         <th:block th:each="product : ${products}">
             <tr>
                 <td th:text="${product.name}">...</td>
-                <td th:text="${product.price}">...</td>
+                <td th:text="${product.price}" >...</td>
                 <td>
                     <form th:action="@{/buyproduct}" method="POST">
                         <input type="hidden" name="id" th:value="${product.id}"/>
