@@ -40,7 +40,6 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
     }
 
 
-
     @Bean
     CommandLineRunner commandLineRunner(ProductService ps, UserService us) {
         return args -> {

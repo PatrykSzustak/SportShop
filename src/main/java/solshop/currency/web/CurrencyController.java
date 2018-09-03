@@ -22,7 +22,7 @@ public class CurrencyController {
 
     @GetMapping("/search")
     private String changeCurrency(@RequestParam String option, Model model) {
-        Currency currency = null;
+        Currency currency;
         if (option.equals("usd")) {
             final String url = "http://api.nbp.pl/api/exchangerates/rates/c/usd/today";
             currency = currencyService.getUsdCurrency(url);
