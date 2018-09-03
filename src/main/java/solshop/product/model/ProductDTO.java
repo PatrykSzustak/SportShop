@@ -1,17 +1,19 @@
 package solshop.product.model;
 
 import lombok.Data;
+import solshop.shopCart.model.ShopCartDTO;
+
+import java.util.List;
 
 
 @Data
 public class ProductDTO {
 
 
-
     private Long id;
     private String name;
     private Double price;
-//    private List<ShopCartDTO> shopCartDTOList;
+    private List<ShopCartDTO> shopCartDTOList ;
 
     public ProductDTO(){
 
@@ -27,6 +29,9 @@ public class ProductDTO {
         this.name = name;
         this.price = price;
     }
+
+
+
 
 
 }

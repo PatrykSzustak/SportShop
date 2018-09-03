@@ -1,10 +1,14 @@
 package solshop.currency.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import solshop.currency.Currency;
 import solshop.currency.Rates;
 import solshop.product.model.ProductDTO;
-import solshop.product.model.ProductEntity;
 import solshop.product.repository.ProductRepository;
 import solshop.product.service.ProductService;
 
@@ -14,24 +18,32 @@ import java.util.Set;
 @Service
 public class CurrencyService {
 
-    public Currency currency;
-
+    private static final Logger log = LoggerFactory.getLogger(CurrencyService.class);
 
     private ProductRepository productRepository;
     private ProductService productService;
 
-    public CurrencyService(ProductRepository productRepository,ProductService productService) {
+
+    @Autowired
+    RestTemplate restTemplate;
+
+    public CurrencyService(ProductRepository productRepository, ProductService productService) {
         this.productRepository = productRepository;
         this.productService = productService;
     }
 
-    public void saveCurrencyInService(Currency currency){
-        this.currency =currency;
+    @Cacheable(value = "currency")
+    public Currency getUsdCurrency(String key) {
+        return restTemplate.getForObject(key, Currency.class);
+    }
+
+    @Cacheable(value = "currency")
+    public Currency getEurCurrency(String key) {
+        return restTemplate.getForObject(key, Currency.class);
     }
 
 
-    public Set<ProductDTO> changeCurrency(String option) {
-
+    public Set<ProductDTO> changeCurrency(Currency currency) {
         Rates rates = new Rates();
         List<Rates> rates1 = currency.getRates();
         for (Rates rates2 : rates1) {
@@ -40,15 +52,10 @@ public class CurrencyService {
         }
         Set<ProductDTO> allProducts = productService.getAllProducts();
         Double ask = rates.getAsk();
-        if (option.equals("usd")) {
-            for (ProductDTO allProduct : allProducts) {
-                Double price = allProduct.getPrice();
-                allProduct.setPrice(price*ask);
-            }
-            return allProducts;
+        for (ProductDTO allProduct : allProducts) {
+            Double price = allProduct.getPrice();
+            allProduct.setPrice(price / ask);
         }
         return allProducts;
     }
-
-
 }

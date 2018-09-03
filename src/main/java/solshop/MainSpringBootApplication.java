@@ -1,34 +1,24 @@
 package solshop;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.cglib.core.internal.LoadingCache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
-import solshop.currency.Currency;
-import solshop.currency.Rates;
-import solshop.currency.service.CurrencyService;
 import solshop.product.model.ProductDTO;
 import solshop.product.service.ProductService;
 import solshop.user.model.UserDTO;
 import solshop.user.service.UserService;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 @SpringBootApplication
+@EnableCaching
 public class MainSpringBootApplication extends SpringBootServletInitializer {
-
-    private static final Logger log = LoggerFactory.getLogger(MainSpringBootApplication.class);
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -39,20 +29,21 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
         SpringApplication.run(MainSpringBootApplication.class, args);
     }
 
-
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(RestTemplate restTemplate, ProductService ps, UserService us, CurrencyService cs) {
-        return args -> {
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("currency");
+    }
 
-            final String url = "http://api.nbp.pl/api/exchangerates/rates/c/usd/today";
-            Currency currency = restTemplate.getForObject(url, Currency.class);
-            cs.saveCurrencyInService(currency);
-            log.info(currency.toString());
+
+
+    @Bean
+    CommandLineRunner commandLineRunner(ProductService ps, UserService us) {
+        return args -> {
 
 
             us.saveAdmin(new UserDTO("admin@gmail.com", "admin", "admin"));

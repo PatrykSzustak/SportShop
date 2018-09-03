@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import solshop.currency.service.CurrencyService;
 import solshop.product.model.ProductDTO;
 import solshop.product.service.ProductService;
 
@@ -17,9 +18,11 @@ import java.util.Map;
 public class ProductController {
 
     private ProductService productService;
+    private CurrencyService currencyService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, CurrencyService currencyService) {
         this.productService = productService;
+        this.currencyService = currencyService;
     }
 
 
@@ -39,14 +42,17 @@ public class ProductController {
         return "productEdit";
     }
 
+
+
     @GetMapping("/skleptest2")
     public String displayForUser(Model model) {
+
         model.addAttribute("products", productService.getAllProducts());
         Map<String, String> dropdownMap = new HashMap<>();
+        dropdownMap.put("PLN", "pln");
         dropdownMap.put("USD", "usd");
         dropdownMap.put("EUR", "eur");
-        dropdownMap.put("PLN", "pln");
-        model.addAttribute("dropDownItems",dropdownMap);
+        model.addAttribute("dropDownItems", dropdownMap);
         return "skleptest2";
     }
 

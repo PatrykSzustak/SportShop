@@ -69,6 +69,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
 
 
         <dependency>
@@ -89,13 +93,12 @@
             <version>1.0.0.CR1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>10.0.1</version>
+            <version>21.0</version>
         </dependency>
-
 
 
         <dependency>
@@ -115,13 +118,11 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>1.0.0.CR1</version>
         </dependency>
-
 
 
     </dependencies>
@@ -142,7 +143,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
 </project>

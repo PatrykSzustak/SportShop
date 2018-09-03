@@ -1,5 +1,6 @@
 package solshop.shopCart.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import solshop.product.model.ProductDTO;
 import solshop.product.model.ProductEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @Component
 public class ShopCartMapperImpl implements ShopCartMapper {
 
+    @Autowired
     private ProductMapper productMapper;
 
     @Override
