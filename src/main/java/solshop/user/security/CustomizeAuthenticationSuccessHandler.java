@@ -17,22 +17,19 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request,
-                                        HttpServletResponse response, Authentication authentication)
-            throws IOException, ServletException {
-
+    public void onAuthenticationSuccess(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            Authentication authentication) throws IOException, ServletException
+    {
         response.setStatus(HttpServletResponse.SC_OK);
-
         boolean admin = false;
-
         logger.info("Authentication ...");
-
         for (GrantedAuthority auth : authentication.getAuthorities()) {
             if ("ROLE_ADMIN".equals(auth.getAuthority())){
                 admin = true;
             }
         }
-
         if(admin){
             response.sendRedirect("/skleptest");
         }else{

@@ -12,15 +12,12 @@ import static java.util.stream.Collectors.toSet;
 
 @Service
 public class ProductService {
-
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
-
     public ProductService(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
     }
-
 
     public ProductDTO findOne(Long productId) {
         return productMapper.toProductDTO(productRepository.findOneById(productId));
@@ -47,6 +44,4 @@ public class ProductService {
         ProductEntity oneById = productRepository.findOneById(id);
         productRepository.delete(oneById);
     }
-
-
 }

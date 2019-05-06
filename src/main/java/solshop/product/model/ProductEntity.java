@@ -12,19 +12,14 @@ import java.util.List;
 @Table(name = "products")
 @Data
 public class ProductEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @NotBlank
     private String name;
-
     private Double price;
-
     @ManyToMany
     private List<ShopCartEntity> shopCartEntityList;
-
 
     public ProductEntity() {
     }
@@ -40,5 +35,4 @@ public class ProductEntity {
         this.price = price;
         this.shopCartEntityList = list;
     }
-
 }

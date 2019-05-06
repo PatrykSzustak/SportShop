@@ -9,11 +9,8 @@ import solshop.user.service.UserService;
 import java.util.Collection;
 import java.util.Set;
 
-
 @Mapper(componentModel = "spring", uses = UserService.class, unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface UserMapper {
-
-
     @Mappings({
             @Mapping(source = "email", target = "mail"),
             @Mapping(target = "confirmPassword", ignore = true),

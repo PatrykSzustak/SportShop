@@ -12,10 +12,8 @@ import java.util.List;
 
 @Component
 public class ShopCartMapperImpl implements ShopCartMapper {
-
     @Autowired
     private ProductMapper productMapper;
-
     @Override
     public ShopCartDTO toShopCartDTO(ShopCartEntity shopCartEntity) {
         if (shopCartEntity == null) {
@@ -26,10 +24,8 @@ public class ShopCartMapperImpl implements ShopCartMapper {
         shopCartDTO.setItemCount(shopCartEntity.getItemCount());
         shopCartDTO.setTotalPrice(shopCartEntity.getTotalPrice());
         shopCartDTO.setId(shopCartEntity.getId());
-
         List<ProductDTO> productDTOS = productMapper.toProductDTO(shopCartEntity.getProductList());
         shopCartDTO.setList(productDTOS);
-
         return shopCartDTO;
     }
 

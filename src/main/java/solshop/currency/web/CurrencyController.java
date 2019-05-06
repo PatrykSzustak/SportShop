@@ -10,16 +10,12 @@ import solshop.product.service.ProductService;
 
 @Controller
 public class CurrencyController {
-
-
     private CurrencyService currencyService;
     private ProductService productService;
-
     public CurrencyController(CurrencyService currencyService,ProductService productService) {
         this.currencyService = currencyService;
         this.productService = productService;
     }
-
     @GetMapping("/search")
     private String changeCurrency(@RequestParam String option, Model model) {
         Currency currency;
@@ -36,5 +32,4 @@ public class CurrencyController {
         }
         return "/skleptest2";
     }
-
 }

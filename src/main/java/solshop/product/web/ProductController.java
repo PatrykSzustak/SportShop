@@ -16,15 +16,12 @@ import java.util.Map;
 
 @Controller
 public class ProductController {
-
     private ProductService productService;
     private CurrencyService currencyService;
-
     public ProductController(ProductService productService, CurrencyService currencyService) {
         this.productService = productService;
         this.currencyService = currencyService;
     }
-
 
     @GetMapping("/skleptest")
     public String displayForAdmin(Model model) {
@@ -42,8 +39,6 @@ public class ProductController {
         return "productEdit";
     }
 
-
-
     @GetMapping("/skleptest2")
     public String displayForUser(Model model) {
 
@@ -55,7 +50,6 @@ public class ProductController {
         model.addAttribute("dropDownItems", dropdownMap);
         return "skleptest2";
     }
-
 
     @PostMapping("/addproduct")
     private String createProduct(@Valid ProductDTO product, BindingResult bindingResult) {

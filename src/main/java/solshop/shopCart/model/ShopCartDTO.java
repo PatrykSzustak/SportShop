@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 public class ShopCartDTO {
-
     private String id;
     private List<ProductDTO> list;
     private int itemCount;
@@ -24,5 +23,4 @@ public class ShopCartDTO {
         this.capacity = capacity;
         this.totalPrice = totalPrice;
     }
-
 }

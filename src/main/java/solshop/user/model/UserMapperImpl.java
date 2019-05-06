@@ -19,11 +19,8 @@ import org.springframework.stereotype.Component;
             if ( userEntity == null ) {
                 return null;
             }
-
             UserDTO userDTO = new UserDTO();
-
             userDTO.setMail( userEntity.getEmail());
-
             return userDTO;
         }
 
@@ -32,12 +29,10 @@ import org.springframework.stereotype.Component;
             if ( userEntities == null ) {
                 return null;
             }
-
             Set<UserDTO> set = new HashSet<UserDTO>( Math.max( (int) ( userEntities.size() / .75f ) + 1, 16 ) );
             for ( UserEntity userEntity : userEntities ) {
                 set.add( toUserDTO( userEntity ) );
             }
-
             return set;
         }
     }

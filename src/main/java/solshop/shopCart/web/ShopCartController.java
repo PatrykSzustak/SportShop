@@ -13,13 +13,10 @@ import java.security.Principal;
 
 @Controller
 public class ShopCartController {
-
     @Autowired
     private ShopCartService shopCartService;
-
     @Autowired
     private ProductService productService;
-
 
     public ShopCartController(ShopCartService shopCartService, ProductService productService) {
         this.shopCartService = shopCartService;
@@ -35,7 +32,6 @@ public class ShopCartController {
         return "redirect:/skleptest2";
     }
 
-
     @GetMapping("/shopCart")
     public String displayProductsInShopCart(Model model, Principal principal) {
         String name = principal.getName();
@@ -45,8 +41,6 @@ public class ShopCartController {
 
         return "shopCart";
     }
-
-
     /*@PostMapping("/removeproductfromshopcart")
     public String removeProductFromShopCart(@RequestParam("id") Long id, Principal principal){
         String name = principal.getName();
