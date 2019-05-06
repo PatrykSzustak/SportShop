@@ -39,12 +39,9 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
         return new ConcurrentMapCacheManager("currency");
     }
 
-
     @Bean
     CommandLineRunner commandLineRunner(ProductService ps, UserService us) {
         return args -> {
-
-
             us.saveAdmin(new UserDTO("admin@gmail.com", "admin", "admin"));
             us.saveUser(new UserDTO("user@gmail.com", "user", "user"));
             us.saveUser(new UserDTO("patryk@patryk.pl", "patryk", "patryk"));
@@ -57,6 +54,4 @@ public class MainSpringBootApplication extends SpringBootServletInitializer {
             ps.saveProduct(new ProductDTO("Plecak", 20.00));
         };
     }
-
-
 }

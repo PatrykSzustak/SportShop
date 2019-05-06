@@ -14,7 +14,6 @@ import java.util.*;
 @Table(name = "users")
 @Data
 public class UserEntity implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -41,14 +40,12 @@ public class UserEntity implements UserDetails {
         this.enabled=enabled;
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> list = new ArrayList<>();
         list.add(new SimpleGrantedAuthority(role));
         return list;
     }
-
 
     @Override
     public String getUsername() {
@@ -73,7 +70,4 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-
-
-
 }

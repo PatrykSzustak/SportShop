@@ -1,7 +1,6 @@
 package solshop.shopCart.service;
 
 import org.springframework.stereotype.Service;
-import solshop.product.model.ProductDTO;
 import solshop.product.model.ProductEntity;
 import solshop.product.model.ProductMapper;
 import solshop.product.repository.ProductRepository;
@@ -113,6 +112,4 @@ public class ShopCartService {
             shopCartRepository.save(shopCartEntity);
         }
     }*/
-
-
 }

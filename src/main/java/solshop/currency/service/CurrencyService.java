@@ -17,18 +17,12 @@ import java.util.Set;
 
 @Service
 public class CurrencyService {
-
     private static final Logger log = LoggerFactory.getLogger(CurrencyService.class);
-
-    private ProductRepository productRepository;
     private ProductService productService;
-
-
     @Autowired
     RestTemplate restTemplate;
-
     public CurrencyService(ProductRepository productRepository, ProductService productService) {
-        this.productRepository = productRepository;
+        ProductRepository productRepository1 = productRepository;
         this.productService = productService;
     }
 
@@ -41,7 +35,6 @@ public class CurrencyService {
     public Currency getEurCurrency(String key) {
         return restTemplate.getForObject(key, Currency.class);
     }
-
 
     public Set<ProductDTO> changeCurrency(Currency currency) {
         Rates rates = new Rates();

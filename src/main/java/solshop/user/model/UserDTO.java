@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Data
 public class UserDTO {
-
     @NotBlank
     private String mail;
     @NotBlank
@@ -15,13 +14,9 @@ public class UserDTO {
 
     public UserDTO() {
     }
-
     public UserDTO( String mail, String password,String confirmPassword) {
         this.mail = mail;
         this.password = password;
         this.confirmPassword =confirmPassword;
     }
-
-
-
 }

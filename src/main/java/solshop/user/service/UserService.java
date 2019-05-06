@@ -15,7 +15,6 @@ import static java.util.stream.Collectors.toSet;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
@@ -37,8 +36,6 @@ public class UserService {
                 .map(userMapper::toUserDTO)
                 .collect(toSet());
     }
-
-
     public void saveUser(UserDTO user) {
         if (!userRepository.findOneByEmail(user.getMail()).isPresent()) {
             if (user.getPassword().equals(user.getConfirmPassword())) {
@@ -48,17 +45,13 @@ public class UserService {
         }
 
     }
-
     public void saveAdmin(UserDTO user) {
         if (user.getPassword().equals(user.getConfirmPassword())) {
             UserEntity userEntity = new UserEntity(user.getMail(), passwordEncoder.encode(user.getPassword()), "ROLE_ADMIN", true);
             userRepository.save(userEntity);
         }
     }
-
-
     public UserDTO findUserByEmail(String email) {
         return userMapper.toUserDTO(userRepository.findOneByEmail(email).orElseThrow(UserNotFoundException::new));
     }
-
 }

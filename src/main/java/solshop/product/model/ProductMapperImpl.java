@@ -8,10 +8,8 @@ import java.util.*;
 
 @Component
 public class ProductMapperImpl implements ProductMapper {
-
     @Autowired
     private ShopCartMapper shopCartMapper;
-
     @Override
     public ProductDTO toProductDTO(ProductEntity productEntity) {
         if (productEntity == null) {
@@ -23,7 +21,6 @@ public class ProductMapperImpl implements ProductMapper {
         productDTO.setName(productEntity.getName());
         productDTO.setPrice(productEntity.getPrice());
 //        productDTO.setShopCartDTOList(shopCartMapper.toShopCartDTO(productEntity.getShopCartEntityList()));
-
         return productDTO;
     }
 
@@ -32,7 +29,6 @@ public class ProductMapperImpl implements ProductMapper {
         if (productEntities == null) {
             return null;
         }
-
         List<ProductDTO> list = new ArrayList<>(Math.max((int) (productEntities.size() / .75f) + 1, 16));
         for (ProductEntity productEntity : productEntities) {
             list.add(toProductDTO(productEntity));
@@ -46,7 +42,6 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
         ProductEntity productEntity = new ProductEntity();
-
         productEntity.setId(productDTO.getId());
         productEntity.setName(productDTO.getName());
         productEntity.setPrice(productDTO.getPrice());
@@ -59,7 +54,6 @@ public class ProductMapperImpl implements ProductMapper {
         if (productDTOS == null) {
             return null;
         }
-
         List<ProductEntity> list = new ArrayList<>(Math.max((int) (productDTOS.size() / .75f) + 1, 16));
         for (ProductDTO productDTO : productDTOS) {
             list.add(toProductEntity(productDTO));

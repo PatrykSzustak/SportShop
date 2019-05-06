@@ -11,17 +11,14 @@ import java.util.List;
 @Table(name = "shopcarts")
 @Data
 public class ShopCartEntity {
-
     @Id
     private String id;
-
     private int itemCount;
     private int capacity;
     private Double totalPrice;
 
     @ManyToMany(mappedBy = "shopCartEntityList")
     private List<ProductEntity> productList ;
-
 
     public ShopCartEntity() {
     }
@@ -33,7 +30,5 @@ public class ShopCartEntity {
         this.totalPrice = totalPrice;
         this.productList = list;
     }
-
-
 }
 
