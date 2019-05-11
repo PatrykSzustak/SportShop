@@ -18,8 +18,8 @@ public class ProductEntity {
     @NotBlank
     private String name;
     private Double price;
-    @ManyToMany
-    private List<ShopCartEntity> shopCartEntityList;
+    /*@ManyToMany
+    private List<ShopCartEntity> shopCartEntityList;*/
 
     public ProductEntity() {
     }
@@ -29,10 +29,10 @@ public class ProductEntity {
         this.price = price;
 
     }
-
+/*
     public ProductEntity(String name, Double price,List<ShopCartEntity> list) {
         this.name = name;
         this.price = price;
         this.shopCartEntityList = list;
-    }
+    }*/
 }

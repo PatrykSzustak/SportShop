@@ -47,14 +47,12 @@ public class ShopCartMapperImpl implements ShopCartMapper {
             return null;
         }
         ShopCartEntity shopCartEntity = new ShopCartEntity();
-
         shopCartEntity.setId(shopCartDTO.getId());
         shopCartEntity.setCapacity(shopCartDTO.getCapacity());
         shopCartEntity.setTotalPrice(shopCartDTO.getTotalPrice());
         shopCartEntity.setItemCount(shopCartDTO.getItemCount());
         List<ProductEntity> productEntities = productMapper.toProductEntity(shopCartDTO.getList());
         shopCartEntity.setProductList(productEntities);
-
         return shopCartEntity;
     }
 

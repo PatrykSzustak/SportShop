@@ -17,7 +17,7 @@ public class ShopCartEntity {
     private int capacity;
     private Double totalPrice;
 
-    @ManyToMany(mappedBy = "shopCartEntityList")
+    @OneToMany
     private List<ProductEntity> productList ;
 
     public ShopCartEntity() {
@@ -30,5 +30,6 @@ public class ShopCartEntity {
         this.totalPrice = totalPrice;
         this.productList = list;
     }
+
 }
 

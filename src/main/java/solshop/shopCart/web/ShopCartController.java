@@ -41,10 +41,10 @@ public class ShopCartController {
 
         return "shopCart";
     }
-    /*@PostMapping("/removeproductfromshopcart")
+    @PostMapping("/removeproductfromshopcart")
     public String removeProductFromShopCart(@RequestParam("id") Long id, Principal principal){
         String name = principal.getName();
         shopCartService.remove(id,name);
         return "redirect:/shopCart";
-    }*/
+    }
 }

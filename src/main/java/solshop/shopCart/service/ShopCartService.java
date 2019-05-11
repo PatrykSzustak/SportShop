@@ -48,11 +48,12 @@ public class ShopCartService {
         return shopCartRepository.findOne(userEmail).getTotalPrice();
     }
 
-    /*public void remove(Long productId,String shopCartId){
+    public void remove(Long productId,String shopCartId){
         ProductEntity oneById = productRepository.findOneById(productId);
         ShopCartEntity one = shopCartRepository.findOne(shopCartId);
         one.getProductList().remove(oneById);
-    }*/
+        shopCartRepository.save(one);
+    }
 
     public void buyProduct(Long productId, String email) {
         if (shopCartRepository.findOne(email) == null) {
@@ -63,7 +64,7 @@ public class ShopCartService {
             list.add(productEntity);
             ShopCartEntity shopCartEntity = new ShopCartEntity(email, 1, 5, price, list);
             shopCartList.add(shopCartEntity);
-            productEntity.setShopCartEntityList(shopCartList);
+//            productEntity.setShopCartEntityList(shopCartList);
             shopCartRepository.save(shopCartEntity);
         } else if (shopCartRepository.findOne(email).getItemCount() < shopCartRepository.findOne(email).getCapacity()) {
             ProductEntity productEntity = productRepository.findOneById(productId);
@@ -73,9 +74,9 @@ public class ShopCartService {
             shopCartEntity.setItemCount(itemCount + 1);
             Double totalPrice = shopCartEntity.getTotalPrice();
             shopCartEntity.setTotalPrice(totalPrice + productEntity.getPrice());
-            List<ShopCartEntity> shopCartEntityList = productEntity.getShopCartEntityList();
-            shopCartEntityList.add(shopCartEntity);
-            productEntity.setShopCartEntityList(shopCartEntityList);
+//            List<ShopCartEntity> shopCartEntityList = productEntity.getShopCartEntityList();
+//            shopCartEntityList.add(shopCartEntity);
+//            productEntity.setShopCartEntityList(shopCartEntityList);
             shopCartRepository.save(shopCartEntity);
         }
     }
