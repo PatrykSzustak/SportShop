@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 import solshop.currency.Currency;
 import solshop.currency.Rates;
 import solshop.product.model.ProductDTO;
-import solshop.product.repository.ProductRepository;
 import solshop.product.service.ProductService;
 
 import java.util.List;
@@ -17,13 +16,13 @@ import java.util.Set;
 
 @Service
 public class CurrencyService {
-    private static final Logger log = LoggerFactory.getLogger(CurrencyService.class);
     private ProductService productService;
-    @Autowired
+    private final
     RestTemplate restTemplate;
-    public CurrencyService(ProductRepository productRepository, ProductService productService) {
-        ProductRepository productRepository1 = productRepository;
+    @Autowired
+    public CurrencyService(ProductService productService, RestTemplate restTemplate) {
         this.productService = productService;
+        this.restTemplate = restTemplate;
     }
 
     @Cacheable(value = "currency")

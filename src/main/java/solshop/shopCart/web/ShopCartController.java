@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import solshop.product.service.ProductService;
 import solshop.shopCart.service.ShopCartService;
 
 import java.security.Principal;
@@ -15,12 +14,9 @@ import java.security.Principal;
 public class ShopCartController {
     @Autowired
     private ShopCartService shopCartService;
-    @Autowired
-    private ProductService productService;
 
-    public ShopCartController(ShopCartService shopCartService, ProductService productService) {
+    public ShopCartController(ShopCartService shopCartService) {
         this.shopCartService = shopCartService;
-        this.productService = productService;
     }
 
     @PostMapping("/buyproduct")

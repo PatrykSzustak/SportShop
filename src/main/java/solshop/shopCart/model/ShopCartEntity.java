@@ -3,8 +3,10 @@ package solshop.shopCart.model;
 import lombok.Data;
 import solshop.product.model.ProductEntity;
 
-import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
@@ -20,7 +22,7 @@ public class ShopCartEntity {
     @OneToMany
     private List<ProductEntity> productList ;
 
-    public ShopCartEntity() {
+    ShopCartEntity() {
     }
 
     public ShopCartEntity(String id,int itemCount, int capacity, Double totalPrice,List<ProductEntity> list) {
@@ -30,6 +32,5 @@ public class ShopCartEntity {
         this.totalPrice = totalPrice;
         this.productList = list;
     }
-
 }
 

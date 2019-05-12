@@ -13,7 +13,7 @@ public class ShopCartDTO {
     private int capacity;
     private Double totalPrice;
 
-    public ShopCartDTO() {
+    ShopCartDTO() {
     }
 
     public ShopCartDTO(String id,List<ProductDTO> list,int itemCount,int capacity,Double totalPrice) {
